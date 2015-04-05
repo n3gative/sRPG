@@ -3,6 +3,7 @@ from pygame import *
 import os
 import classes
 from classes import *
+from gameMap import Map
 def main():
     pygame.init()
     #resolution for 20 tiles horizontally,10 vertically
@@ -10,6 +11,8 @@ def main():
     screen = display.set_mode(res)
     running = 1
     #map file
+    mm = Map(os.path.join("images2","imgdb.dat"))
+    mm.initTest(screen)
     map1 = open(os.path.join('data','map1.dat'),'r')
     tileList = []
     me = Player()
