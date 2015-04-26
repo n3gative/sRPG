@@ -3,12 +3,12 @@ from pygame import *
 import os
 #class of Tile
 class Tile:
-    def __init__(self,char,pos,solid):
-        self.image = image.load(os.path.join('images',char+'.png')).convert()
-        self.rect = self.image.get_rect()
+    def __init__(self,name,pos):
+        self.imageName = name
+        self.rect = rect.Rect((32,32),(32,32))
         self.rect.topleft = pos
-        self.solid = solid
-    def blit(self,player,surface):
+        self.solid = False
+    def blit(self,player,surface,imgCont):
         #collision system
         if self.solid:
             if self.rect.colliderect(player.rect):
@@ -25,7 +25,7 @@ class Tile:
                     player.left = 0
                     player.rect.move_ip(1,0)
                     print(player.up,player.down,player.left,player.right)
-        surface.blit(self.image,self.rect)
+        surface.blit(imgCont[self.imageName],self.rect)
 #player duh
 class Player:
     def __init__(self):
